@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Kareoke - Hamburger Helper | Feed The Streets</title>
+     
+		<script src="jquery-1.7.2.js"></script>
+		<script src="audioaligner.js"></script>
+		
+		<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: #000;
+			font-family: Baskerville;
+		}
+		#container {
+			width: 500px;
+			margin: 0 auto 20px; 
+			background: #fff;
+			border: solid 5px #38342b;
+			border-radius: 5px;
+		}
+		
+		#header {
+			margin: 20px auto 0; 
+			width: 500px;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		#header h1 {
+			margin: 0;
+		}
+		
+		#menu {
+			background: #ddd;
+			padding: 10px;
+			position: relative;
+			height: 30px;
+		}
+		
+		#player {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 200px;
+			
+		}
+		
+		#content {
+			padding: 30px;
+			min-height: 300px;
+			line-height: 1.4;
+		}
+		
+		#footer {
+			background: #ccc;
+			color: #333;
+			font-size: 11px;
+			padding: 10px;
+			
+		}
+
+		.word-data {
+			-x-background: #ffffee;
+		}
+		.current-word {
+			background: yellow;
+			outline: solid 2px yellow;
+			box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		}
+		.aligned-word:hover {
+			cursor: pointer;
+			background: #FEFFDC;
+		}
+		</style>
+		
+		
+    </head>
+    <body>
+		<div id="header">
+			<h1>HTML5 Audio Karaoke</h1>	
+			<p>
+			Hamburger Helper<br /><em>Feed The Streets</em><br><span style="color:red;">Warning: Poor alignment</span> See <a href="index.html">Bible aligner</A></p>
+		</div>
+		<div id="container">
+			<div id="menu">
+				<audio id="player" controls ></audio>
+			</div>		
+			<div id="content">
+				<div id="target">
+					<p>I been in the kitchen, whippin, whippin</p>
+					<p>I've been chefin</p>
+					<p>Mixin with my left hand</p>
+					<p>Water whippin' and I'm stirin'</p>
+					<p>You want beef and I'ma serve it</p>
+					<p>Water whippin' and I'm stirin'</p>
+					<p>You want beef and I'ma serve it</p>
+					<p>I stir it, I stir it, I stir it, I stir it, I hit the pot with a spatula</p>
+					<p>I mix it, I mix it, I whip it, I whip it so good you would think</p>
+					<p>Water whippin' and I'm stirin'</p>
+					<p>Y'all want beef and I'ma serve it</p>
+					<p>Y'all want beef and I'ma serve it</p>
+					<p>Y'all want beef and I'ma-</p>
+					<p>You can catch me at the stove</p>
+					<p>I was whippin' up a bowl</p>
+					<p>I just came back from the store</p>
+					<p>Five Star restaurant at home</p>
+					<p>I just dumped out that whole packet</p>
+					<p>Add the powder, let it simmer</p>
+					<p>I was whippin', whippin', whippin'</p>
+					<p>Should be done 'bout ten minutes</p>
+					<p>Hold up, I told you I'm servin' that Stroganoff</p>
+					<p>Hot out the oven, it's molten lava</p>
+					<p>Aye, I get some more for mama</p>
+					<p>Aye, servin' your auntie and serve your uncle</p>
+					<p>Aye, I boil the pot and then I drop the bundle</p>
+					<p>With my wrist until I got that Carpal Tunnel</p>
+					<p>I want tacos, enchiladas</p>
+					<p>I want pasta and lasagna</p>
+					<p>Boy, I got too many flavors</p>
+					<p>You might've thought it was catered</p>
+					<p>I find them noodles like macaroni</p>
+					<p>I say we chicken like Cacciatore</p>
+					<p>Y'all still tryna talk about some Bieber</p>
+					<p>Name your competition in my category</p>
+					<p>Aye, keep that heat on me</p>
+					<p>I be in the kitchen, 350 degrees, homie</p>
+					<p>All these haters salty, I'm too seasoned, homie</p>
+					<p>Drippin' down, I got cheese on me</p>
+					<p>Yo, Lefty make sure that we straight</p>
+					<p>I've been servin' ya up a plate</p>
+					<p>Lefty make sure that we eat</p>
+					<p>Lefty he stay with that heat</p>
+					<p>Only want beef with the lean in it</p>
+					<p>I added the different ingredients</p>
+					<p>That's why the streets show me love</p>
+					<p>Cause I've always been feedin' 'em</p>		
+				</div>
+			</div>		
+		</div>
+		
+		<script>
+			// check for MP3
+			var audio = document.getElementById('player');
+			if (!(audio.canPlayType && (audio.canPlayType('audio/mp3') || audio.canPlayType('audio/mpeg')) )) {
+				alert('Please use a browser that can play MP3s like Chrome, Safari, IE9');
+			}
+			// create aligner
+			var aligner = new AudioAligner(document.getElementById('target'), audio); 
+			// load and align
+			aligner.align('hamburger-helper/feed-the-streets.mp3', 'hamburger-helper/feed-the-streets.json');
+		</script>
+    </body>
+</html>
