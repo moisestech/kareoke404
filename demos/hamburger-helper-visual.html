@@ -13,7 +13,7 @@
 			height: 100vh;
 			font-family: Helvetica;
 			font-weight: bolder;
-			font-size: 1.6em;
+			font-size: 1.3em;
 			position: absolute;
 			margin: 0;
 			padding: 0;
@@ -29,6 +29,7 @@
 			top: 0;
 			left: 0;
 			z-index: 0;
+			opacity: 0;
 		}
 		.video video {
 			width: 80%;
@@ -43,6 +44,7 @@
 			left: 0;
 			opacity: .2;
 			z-index: 15;
+			display: none;
 		}
 		.video .overlay-image {
 			background-image: url('./assets/helper.jpg');
@@ -54,8 +56,9 @@
 			height: 100%;
 			opacity: 1;
 			z-index: 8;
+			display: none;
 		}
-		#target div {
+		#target div span {
 			display: inline-block;
 			opacity: 1;
 			word-wrap: break-word;
@@ -66,7 +69,7 @@
 			position: absolute;
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			justify-content: flex-start;
 		}
 		
 		#header h1 {
@@ -88,35 +91,39 @@
 			position: absolute;
 			top: 10px;
 			right: 10px;
-			width: 200px;
-			
+			width: 200px;	
 		}
-		
 		#content {
-			width: 75%;
-			height: 75%;
 			line-height: 1.4;
 			z-index: 20;
 		}
-		
 		#footer {
 			background: #ccc;
 			color: #333;
 			font-size: 11px;
-			padding: 10px;
-			
+			padding: 10px;	
 		}
-
 		.word-data {
 			-x-background: #ffffee;
 		}
 		.current-word {
-			background: yellow;
-			outline: solid 2px yellow;
+			background-image: url('./assets/helper-gold.jpg');
+			background-size: cover;
+			background-position: center;
 			box-shadow: 0 0 10px rgba(0,0,0,0.5);
 			opacity: 1;
 			color: red;
-			font-size: 2.4em;
+			font-size: 3em;
+			position: absolute;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			top: 40%;
+			max-width: 800px;
+			height: auto;
+			padding: 20px 40px;
+			text-shadow: 1px 0px 1px rgba(160,160,170,.5), 2px 1px 1px rgba(159,159,169,.6), 3px 2px 1px rgba(158,158,168,.7), 4px 3px 1px rgba(157,157,167,.8), 5px 4px 1px rgba(156,156,166,.9), 6px 5px 1px rgba(155,155,165, 1), 7px 6px 1px rgba(154,154,164, 1), 8px 7px 1px rgba(153,153,163, 1), 9px 8px 1px rgba(152,152,162, 1), 12px 12px 20px rgba(0,0,0,.20);
+			transform: skewY(-15deg);
 		}
 		.aligned-word:hover {
 			cursor: pointer;
@@ -185,7 +192,7 @@
 			<div class="video">
 				<span class="overlay"></span>
 				<span class="overlay-image"></span>
-				<video width="320" height="240" autoplay loop>
+				<video width="320" height="240" autoplay loop muted>
 				  <source src="assets/hamburger-helper-commercial.mp4" type="video/mp4">
 				  Your browser does not support the video tag.
 				</video>
